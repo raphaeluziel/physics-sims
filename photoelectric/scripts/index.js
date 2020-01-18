@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var color = 1;
 
   var photon_energy = 1.8;
-  var work_function = 1.0;
+  var work_function = 2.0;
   var intensity = 1;
   var stopping_voltage = 0;
 
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var vx = -8;
   var vy = 3;
-  var vex = 10;
   var hit = false;
 
   function fillForm(photon_energy, work_function, intensity, stopping_voltage) {
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('stopping_voltage').value = stopping_voltage.toFixed(2);
   }
 
-  fillForm(1.8, 1.0, 1, 0);
+  fillForm(1.8, 2.0, 1, 0);
 
   document.getElementById('set').addEventListener('click', function(){
     message = "";
@@ -73,7 +72,12 @@ document.addEventListener('DOMContentLoaded', function(){
       message = "Enter a stopping voltage between 0 and 10 V";
 
     if (message){
-      fillForm(1.8, 1.0, 1, 0);
+      fillForm(1.8, 2.0, 1, 0);
+      photon_energy = 1.8;
+      color = 1;
+      work_function = 2.0;
+      intensity = 1;
+      stopping_voltage = 0;
       document.getElementById("message").innerHTML = message;
     }
     else{
@@ -86,13 +90,22 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('reset').addEventListener('click', function(){
     message = "";
 
+    for (let i = 0; i < photons.length; i++){
+      photons[i].destroy();
+    }
+    for (let i = 0; i < electrons.length; i++){
+      electrons[i].destroy();
+    }
+    photons = [];
+    electrons = [];
+
     photon_energy = 1.8;
     color = 1;
-    work_function = 1.0;
+    work_function = 2.0;
     intensity = 1;
     stopping_voltage = 0;
 
-    fillForm(1.8, 1.0, 1, 0);
+    fillForm(1.8, 2.0, 1, 0);
   });
 
   function preload ()
@@ -105,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function create ()
   {
-    timer = this.add.text(20, 20, 'Begin', { fontSize: '24px', fill: '#fcc' });
+    //timer = this.add.text(20, 20, 'Begin', { fontSize: '24px', fill: '#fcc' });
 
     metal = this.add.image(100, 298, 'metal');
     metal.setScale(0.4);
@@ -142,6 +155,8 @@ document.addEventListener('DOMContentLoaded', function(){
           electrons[electrons.length - 1].setScale(0.1);
           electrons[electrons.length - 1].t = 0;
           electrons[electrons.length - 1].speed = Math.sqrt(photons[i].energy - work_function);
+          photons[i].destroy();
+          photons.splice[i, 1];
         }
       }
 
@@ -171,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     }
 
-    timer.setText(Math.round(t/1000));
+    //timer.setText(Math.round(t/1000));
 
   }
 
