@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function(){
   var message = "";
 
   var color = 1;
-
   var photon_energy = 1.8;
   var work_function = 2.0;
   var intensity = 1;
@@ -30,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
   var flashlight;
   var metal;
 
+  var meter;
+  var current = 0;
   var vx = -8;
   var vy = 3;
   var hit = false;
@@ -51,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function(){
     intensity = parseInt(document.getElementById('intensity').value);
     stopping_voltage = parseFloat(document.getElementById('stopping_voltage').value);
 
-    if (photon_energy < 1 || photon_energy > 10 || isNaN(photon_energy)) {
-      message = "Enter a photon energy between 1 and 10 eV";
+    if (photon_energy < 1 || photon_energy > 6 || isNaN(photon_energy)) {
+      message = "Enter a photon energy between 1 and 6 eV";
     }
     else {
       if (photon_energy < 1.59) { color = 0; }
@@ -64,19 +65,19 @@ document.addEventListener('DOMContentLoaded', function(){
       else if (photon_energy < 3.19) { color = 6; }
       else if (photon_energy < 10.0) { color = 7; }
     }
-    if (work_function < 0 || work_function > 10 || isNaN(work_function))
-      message = "Enter a work function between 0 and 10 eV";
+    if (work_function < 1 || work_function > 6 || isNaN(work_function))
+      message = "Enter a work function between 1 and 6 eV";
     if (intensity < 0 || intensity > 10 || isNaN(intensity))
       message = "Enter an integer for intensity between 0 and 10";
-    if (stopping_voltage < 0 || stopping_voltage > 10 || isNaN(stopping_voltage))
-      message = "Enter a stopping voltage between 0 and 10 V";
+    if (stopping_voltage < 0 || stopping_voltage > 5 || isNaN(stopping_voltage))
+      message = "Enter a stopping voltage between 0 and 5 V";
 
     if (message){
       fillForm(1.8, 2.0, 1, 0);
       photon_energy = 1.8;
       color = 1;
       work_function = 2.0;
-      intensity = 1;
+      intensity = 0;
       stopping_voltage = 0;
       document.getElementById("message").innerHTML = message;
     }
@@ -113,12 +114,24 @@ document.addEventListener('DOMContentLoaded', function(){
     this.load.image('metal', 'images/metal.png');
     this.load.image('flashlight', 'images/flashlight.png');
     this.load.image('electron', 'images/electron.png');
+    this.load.image('needle', 'images/needle.png');
     this.load.spritesheet('photon', 'images/photons.png', { frameWidth: 255, frameHeight: 112});
   }
 
   function create ()
   {
-    //timer = this.add.text(20, 20, 'Begin', { fontSize: '24px', fill: '#fcc' });
+    meter = this.add.text(700, 300, '0', { fontSize: '24px', fill: '#fcc' });
+
+    timedEvent = this.time.addEvent(
+      {
+        delay: 2000,
+        callback: function(){
+          meter.setText(current);
+          needle.angle = current < 8 ? current * 10 : 80;
+          current = 0;
+        },
+        callbackScope: this, loop: true
+      });
 
     metal = this.add.image(100, 298, 'metal');
     metal.setScale(0.4);
@@ -126,6 +139,10 @@ document.addEventListener('DOMContentLoaded', function(){
     flashlight = this.add.image(700, 80, 'flashlight');
     flashlight.setScale(0.2);
     flashlight.angle = 9;
+
+    needle = this.add.sprite(700, 400, 'needle');
+    needle.setScale(0.5);
+    needle.setOrigin(0.5, 1);
 
   }
 
@@ -136,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let x;
     if (n % Math.round((100 / intensity)) === 0){
       x = this.add.sprite(650, 80 + 30 * Math.random(), 'photon');
-      x.setScale(0.2);
+      x.setScale(0.1);
       x.vx = -8;
       x.angle = -20;
       x.setFrame(color);
@@ -152,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function(){
         photons[i].angle *= -1;
         if (photons[i].energy > work_function){
           electrons.push(this.add.sprite(photons[i].x, photons[i].y, 'electron'));
-          electrons[electrons.length - 1].setScale(0.1);
+          electrons[electrons.length - 1].setScale(0.05);
           electrons[electrons.length - 1].t = 0;
           electrons[electrons.length - 1].speed = Math.sqrt(photons[i].energy - work_function);
           photons[i].destroy();
@@ -181,12 +198,11 @@ document.addEventListener('DOMContentLoaded', function(){
       electrons[j].x += electrons[j].speed - 0.0000008 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
 
       if (electrons[j].x > 800 || electrons[j].x < 95){
+        current += 1;
         electrons[j].destroy();
         electrons.splice(j, 1);
       }
     }
-
-    //timer.setText(Math.round(t/1000));
 
   }
 
