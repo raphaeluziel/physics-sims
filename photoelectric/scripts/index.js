@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var meter;
   var current = 0;
   var vx = -8;
-  var vy = 3;
+  var vy = 2;
   var hit = false;
 
   function fillForm(photon_energy, work_function, intensity, stopping_voltage) {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function(){
         callbackScope: this, loop: true
       });
 
-    metal = this.add.image(100, 298, 'metal');
+    metal = this.add.image(100, 240, 'metal');
     metal.setScale(0.4);
 
     flashlight = this.add.image(700, 80, 'flashlight');
