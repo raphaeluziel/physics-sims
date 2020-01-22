@@ -85,11 +85,18 @@ document.addEventListener('DOMContentLoaded', function(){
       fillForm(photon_energy, work_function, intensity, stopping_voltage)
       document.getElementById("message").innerHTML = message;
     }
+    if (photon_energy > work_function){
+      electrons_txt.setText('photoelectrons');
+    }
+    else{
+      electrons_txt.setText('');
+    }
 
   });
 
   document.getElementById('reset').addEventListener('click', function(){
     message = "";
+    electrons_txt.setText('');
 
     for (let i = 0; i < photons.length; i++){
       photons[i].destroy();
@@ -111,38 +118,60 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function preload ()
   {
+    this.load.image('tube', 'images/tube.png');
+    this.load.image('battery', 'images/battery.png');
     this.load.image('metal', 'images/metal.png');
     this.load.image('flashlight', 'images/flashlight.png');
     this.load.image('electron', 'images/electron.png');
     this.load.image('needle', 'images/needle.png');
+    this.load.image('circuit', 'images/circuit.png');
+    this.load.image('meter', 'images/meter.png');
     this.load.spritesheet('photon', 'images/photons.png', { frameWidth: 255, frameHeight: 112});
   }
 
   function create ()
   {
-    meter = this.add.text(700, 300, '0', { fontSize: '24px', fill: '#fcc' });
+    this.add.text(110, 280, 'photoemissive metal');
+    this.add.text(180, 105, 'vacuum tube');
+    this.add.text(545, 430, 'microammeter');
+    this.add.text(590, 15, 'light source');
+    this.add.text(250, 435, 'stopping voltage');
+    this.add.text(80, 415, 'wire');
+
+    electrons_txt = this.add.text(380, 230, '');
+
+    explanation = this.add.text(10, 10, '');
+
+    this.add.image(400, 220, 'tube').setScale(0.49);
+
+    circuit = this.add.image(400, 280, 'circuit').setScale(0.65);
+
+    this.add.image(300, 403, 'battery').setScale(0.65);
+
+    meter_image = this.add.image(600, 380, 'meter');
+    meter_image.setScale(0.3);
+
+    metal = this.add.image(100, 220, 'metal');
+    metal.setScale(0.4);
+
+    flashlight = this.add.image(700, 60, 'flashlight');
+    flashlight.setScale(0.2);
+    flashlight.angle = 9;
+
+    needle = this.add.sprite(601, 390, 'needle');
+    needle.setScale(0.12);
+    needle.setOrigin(0.5, 1);
+    needle.angle = -55;
 
     timedEvent = this.time.addEvent(
       {
         delay: 2000,
         callback: function(){
-          meter.setText(current);
-          needle.angle = current < 8 ? current * 10 : 80;
+          needle.angle = current < 8 ? current * 10 - 55 : 55;
           current = 0;
         },
         callbackScope: this, loop: true
       });
-
-    metal = this.add.image(100, 240, 'metal');
-    metal.setScale(0.4);
-
-    flashlight = this.add.image(700, 80, 'flashlight');
-    flashlight.setScale(0.2);
-    flashlight.angle = 9;
-
-    needle = this.add.sprite(700, 400, 'needle');
-    needle.setScale(0.5);
-    needle.setOrigin(0.5, 1);
 
   }
 
@@ -152,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function(){
     n += 1;
     let x;
     if (n % Math.round((100 / intensity)) === 0){
-      x = this.add.sprite(650, 80 + 30 * Math.random(), 'photon');
+      x = this.add.sprite(650, 60 + 30 * Math.random(), 'photon');
       x.setScale(0.1);
       x.vx = -8;
       x.angle = -20;
@@ -169,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function(){
         photons[i].angle *= -1;
         if (photons[i].energy > work_function){
           electrons.push(this.add.sprite(photons[i].x, photons[i].y, 'electron'));
-          electrons[electrons.length - 1].setScale(0.05);
+          electrons[electrons.length - 1].setScale(0.03);
           electrons[electrons.length - 1].t = 0;
           electrons[electrons.length - 1].speed = Math.sqrt(photons[i].energy - work_function);
           photons[i].destroy();
@@ -185,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
       photons[i].y += vy;
 
-      if (photons[0].y > 600){
+      if (photons[0].y > 500){
         photons[0].destroy();
         photons.shift();
       }
@@ -197,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function(){
       electrons[j].t += 1;
       electrons[j].x += electrons[j].speed - 0.0000008 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
 
-      if (electrons[j].x > 800 || electrons[j].x < 95){
+      if (electrons[j].x > 685 || electrons[j].x < 95){
         current += 1;
         electrons[j].destroy();
         electrons.splice(j, 1);
