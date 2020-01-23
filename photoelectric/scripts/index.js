@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if (photon_energy < work_function)
       explanation = "Right now, none of the photons have the energy to knock an electron out.";
-    if ((photon_energy >= work_function) && (photon_energy >= work_function + stopping_voltage))
+    if ((photon_energy > work_function + stopping_voltage))
       explanation = "Now the photons have enough energy to knock an electron out, and the electrons have enough enrgy to overcome the stopping voltage (if any) to get to the other side, and produce a current";
     if ((photon_energy >= work_function) && (photon_energy <= work_function + stopping_voltage))
       explanation = "Now the photons have enough energy to knock an electron out, but not enough kinetic energy to overcome the stopping voltage.";
@@ -231,11 +231,11 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let j = 0; j < electrons.length; j++){
 
       electrons[j].t += 1;
-      electrons[j].x += electrons[j].speed - 0.00000381 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
+      electrons[j].x += electrons[j].speed - 0.0007 * electrons[j].t;
 
       if (electrons[j].x > 685)
         current += 1;
-        
+
       if (electrons[j].x > 685 || electrons[j].x < 95){
         electrons[j].destroy();
         electrons.splice(j, 1);
