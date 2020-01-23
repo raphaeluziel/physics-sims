@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function(){
   var vy = 2;
   var hit = false;
 
+  var explanation = "Right now, none of the photons have the energy to knock an electron out.";
+  document.getElementById('explanation').innerHTML = explanation;
+
   function fillForm(photon_energy, work_function, intensity, stopping_voltage) {
     document.getElementById('photon_energy').value = photon_energy.toFixed(2);
     document.getElementById('work_function').value = work_function.toFixed(2);
@@ -54,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if (photon_energy < 1 || photon_energy > 6 || isNaN(photon_energy)) {
       message = "Enter a photon energy between 1 and 6 eV";
+      photon_energy = 1.80;
     }
     else {
       if (photon_energy < 1.59) { color = 0; }
@@ -65,32 +69,35 @@ document.addEventListener('DOMContentLoaded', function(){
       else if (photon_energy < 3.19) { color = 6; }
       else if (photon_energy < 10.0) { color = 7; }
     }
-    if (work_function < 1 || work_function > 6 || isNaN(work_function))
+    if (work_function < 1 || work_function > 6 || isNaN(work_function)){
       message = "Enter a work function between 1 and 6 eV";
-    if (intensity < 0 || intensity > 10 || isNaN(intensity))
+      work_function = 2;
+    }
+    if (intensity < 0 || intensity > 10 || isNaN(intensity)){
       message = "Enter an integer for intensity between 0 and 10";
-    if (stopping_voltage < 0 || stopping_voltage > 5 || isNaN(stopping_voltage))
+      intensity = 1;
+    }
+    if (stopping_voltage < 0 || stopping_voltage > 5 || isNaN(stopping_voltage)){
       message = "Enter a stopping voltage between 0 and 5 V";
-
-    if (message){
-      fillForm(1.8, 2.0, 1, 0);
-      photon_energy = 1.8;
-      color = 1;
-      work_function = 2.0;
-      intensity = 0;
       stopping_voltage = 0;
-      document.getElementById("message").innerHTML = message;
     }
-    else{
-      fillForm(photon_energy, work_function, intensity, stopping_voltage)
-      document.getElementById("message").innerHTML = message;
-    }
-    if (photon_energy > work_function){
+
+    fillForm(photon_energy, work_function, intensity, stopping_voltage);
+    document.getElementById("error").innerHTML = message;
+
+    if (photon_energy > work_function)
       electrons_txt.setText('photoelectrons');
-    }
-    else{
+    else
       electrons_txt.setText('');
-    }
+
+    if (photon_energy < work_function)
+      explanation = "Right now, none of the photons have the energy to knock an electron out.";
+    if ((photon_energy >= work_function) && (photon_energy >= work_function + stopping_voltage))
+      explanation = "Now the photons have enough energy to knock an electron out, and the electrons have enough enrgy to overcome the stopping voltage (if any) to get to the other side, and produce a current";
+    if ((photon_energy >= work_function) && (photon_energy <= work_function + stopping_voltage))
+      explanation = "Now the photons have enough energy to knock an electron out, but not enough kinetic energy to overcome the stopping voltage.";
+
+    document.getElementById('explanation').innerHTML = explanation;
 
   });
 
@@ -224,13 +231,16 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let j = 0; j < electrons.length; j++){
 
       electrons[j].t += 1;
-      electrons[j].x += electrons[j].speed - 0.0000008 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
+      electrons[j].x += electrons[j].speed - 0.00000381 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
 
-      if (electrons[j].x > 685 || electrons[j].x < 95){
+      if (electrons[j].x > 685)
         current += 1;
+        
+      if (electrons[j].x > 685 || electrons[j].x < 95){
         electrons[j].destroy();
         electrons.splice(j, 1);
       }
+
     }
 
   }
