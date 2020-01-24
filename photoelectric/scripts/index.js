@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let j = 0; j < electrons.length; j++){
 
       electrons[j].t += 1;
-      electrons[j].x += electrons[j].speed - 0.0007 * electrons[j].t;
+      electrons[j].x = electrons[j].x + 0.01 * electrons[j].speed * electrons[j].t; //- 0.0007 * electrons[j].t;
 
       if (electrons[j].x > 685)
         current += 1;
