@@ -1,0 +1,35 @@
+body{
+  width: 850px;
+  margin: 10px auto;
+  color: lightyellow;
+}
+h1{
+  text-align: center;
+  font-size: 24px;
+}
+input{
+  width: 50px;
+  text-align: right;
+  padding-right: 4px;
+  padding-bottom: 2px;
+  background-color: #550;
+  color: pink;
+  border: 1px solid gray;
+}
+form{
+  padding: 0px 0px 15px 25px;
+}
+.error{
+  color: pink;
+  padding-left: 10px;
+}
+#explanation{
+  margin: 10px 45px 10px 25px;
+  padding: 5px;
+  color: lightblue;
+  background-color: #333;
+  font-style: italic;
+}
+#game{
+  text-align: center;
+}
