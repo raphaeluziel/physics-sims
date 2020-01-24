@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function(){
         photons[i].hit = true;
         photons[i].angle *= -1;
         if (photons[i].energy > work_function){
-          electrons.push(this.add.sprite(photons[i].x, photons[i].y, 'electron'));
+          electrons.push(this.add.sprite(100, photons[i].y, 'electron'));
           electrons[electrons.length - 1].setScale(0.03);
           electrons[electrons.length - 1].t = 0;
           electrons[electrons.length - 1].speed = Math.sqrt(photons[i].energy - work_function);
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let j = 0; j < electrons.length; j++){
 
       electrons[j].t += 1;
-      electrons[j].x = electrons[j].x + 0.01 * electrons[j].speed * electrons[j].t; //- 0.0007 * electrons[j].t;
+      electrons[j].x = 100 + electrons[j].speed * electrons[j].t - 0.000382 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
 
       if (electrons[j].x > 685)
         current += 1;
