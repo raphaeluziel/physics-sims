@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var game = new Phaser.Game(config);
 
+  const DECELERATION_CONSTANT = 0.0004252;
+
   var message = "";
 
   var color = 1;
@@ -92,9 +94,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if (photon_energy < work_function)
       explanation = "Right now, none of the photons have the energy to knock an electron out.";
-    if ((photon_energy > work_function + stopping_voltage))
+    if ((photon_energy >= work_function + stopping_voltage))
       explanation = "Now the photons have enough energy to knock an electron out, and the electrons have enough enrgy to overcome the stopping voltage (if any) to get to the other side, and produce a current";
-    if ((photon_energy >= work_function) && (photon_energy <= work_function + stopping_voltage))
+    if ((photon_energy >= work_function) && (photon_energy < work_function + stopping_voltage))
       explanation = "Now the photons have enough energy to knock an electron out, but not enough kinetic energy to overcome the stopping voltage.";
 
     document.getElementById('explanation').innerHTML = explanation;
@@ -138,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function create ()
   {
+    this.add.text(20, 20, "The Photoelectric Effect", { fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",  fontSize: "22px", color: "lightgreen" });
     this.add.text(110, 280, 'photoemissive metal');
     this.add.text(180, 105, 'vacuum tube');
     this.add.text(545, 430, 'microammeter');
@@ -153,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     circuit = this.add.image(400, 280, 'circuit').setScale(0.65);
 
-    this.add.image(300, 403, 'battery').setScale(0.65);
+    this.add.image(300, 403, 'battery').setScale(0.45);
 
     meter_image = this.add.image(600, 380, 'meter');
     meter_image.setScale(0.3);
@@ -231,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let j = 0; j < electrons.length; j++){
 
       electrons[j].t += 1;
-      electrons[j].x = 100 + electrons[j].speed * electrons[j].t - 0.000382 * Math.sqrt(stopping_voltage) * electrons[j].t * electrons[j].t;
+    electrons[j].x = 100 + electrons[j].speed * electrons[j].t - DECELERATION_CONSTANT * stopping_voltage * electrons[j].t * electrons[j].t;
 
       if (electrons[j].x > 685)
         current += 1;
