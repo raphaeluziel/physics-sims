@@ -29,6 +29,7 @@ function preload ()
 {
     this.load.image('particle', 'assets/sprites/particle.png');
     this.load.image('shape1', 'assets/sprites/shape1.png');
+    this.load.image('line', 'assets/sprites/line.png');
 }
 
 function create ()
@@ -46,24 +47,37 @@ function create ()
       parts: [ rectA, rectB, circleA, circleB, circleC, circleD ]
     });
 
-    var particleCircle = Bodies.circle(200, 190, 24);
+    var particleCircle = Bodies.circle(200, 270, 4);
 
     particleCollider = Phaser.Physics.Matter.Matter.Body.create({
       parts: [ particleCircle ]
     });
 
-    var shape1 = this.matter.add.image(150, 0, 'shape1').setScale(0.2);
+    var shape1 = this.matter.add.image(0, 0, 'shape1').setScale(0.2);
     shape1.setExistingBody(collider1);
     shape1.setBounce(0);
     shape1.setStatic(true);
+    shape1.setAngle(45);
     //this.matter.add.image(350, 450, 'platform', null, { isStatic: true }).setScale(2, 0.5).setAngle(8);
 
-    particle = this.matter.add.image(200, 190, 'particle').setScale(0.25);
+    particle = this.matter.add.image(0, 0, 'particle').setScale(0.05);
     particle.setExistingBody(particleCollider);
-    particle.setFrictionAir(0).setBounce(1);
+    particle.setFrictionAir(0).setBounce(1).setFriction(0);
+    particle.setAngularVelocity(0);
 
     particle.setVelocity(6, 0);
+
+    this.add.image(400, 325, 'line').setAngle(90);
+    this.add.image(400, 270, 'line').setAngle(90);
+
+    this.matter.world.on('collisionstart', function (event, particle, shape1) {
+
+        particle.gameObject.setTint(0xff0000);
+        shape1.gameObject.setTint(0x00ff00);
+        console.log("hit");
+    });
 }
+
 
 function update(t)
 {
