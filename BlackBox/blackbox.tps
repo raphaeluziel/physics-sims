@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.8.0</string>
+        <string>5.3.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -26,7 +26,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <true/>
+        <false/>
         <key>shapeDebug</key>
         <false/>
         <key>dpi</key>
@@ -56,7 +56,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
+        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -82,7 +82,7 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png8</enum>
+        <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -132,7 +132,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>assets/fruit-sprites.json</filename>
+                <filename>assets/blackbox.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -181,10 +181,12 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">fruit-sprites/background.png</key>
+            <key type="filename">sprites/background.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -194,13 +196,15 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">fruit-sprites/banana.png</key>
-            <key type="filename">fruit-sprites/cherries.png</key>
-            <key type="filename">fruit-sprites/crate.png</key>
-            <key type="filename">fruit-sprites/orange.png</key>
+            <key type="filename">sprites/banana.png</key>
+            <key type="filename">sprites/cherries.png</key>
+            <key type="filename">sprites/crate.png</key>
+            <key type="filename">sprites/orange.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -210,32 +214,47 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">fruit-sprites/ground.png</key>
+            <key type="filename">sprites/ground.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
                 <rect>300,157,600,313</rect>
                 <key>scale9Paddings</key>
                 <rect>300,157,600,313</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/shape2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>122,192,243,383</rect>
+                <key>scale9Paddings</key>
+                <rect>122,192,243,383</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>fruit-sprites</filename>
+            <filename>sprites</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
         <array/>
         <key>ignoredWarnings</key>
-        <array>
-            <string>phaser3-exporter-beta</string>
-        </array>
+        <array/>
         <key>commonDivisorX</key>
         <uint>1</uint>
         <key>commonDivisorY</key>
@@ -251,17 +270,6 @@
         <key>normalMapSheetFileName</key>
         <filename></filename>
         <key>exporterProperties</key>
-        <map type="ExporterProperties">
-            <key>css::media-query-2x</key>
-            <struct type="ExporterProperty">
-                <key>value</key>
-                <string>(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)</string>
-            </struct>
-            <key>css::sprite-prefix</key>
-            <struct type="ExporterProperty">
-                <key>value</key>
-                <string></string>
-            </struct>
-        </map>
+        <map type="ExporterProperties"/>
     </struct>
 </data>
