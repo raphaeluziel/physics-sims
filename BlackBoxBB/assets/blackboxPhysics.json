@@ -3,7 +3,7 @@
 	"sha04": {
 		"type": "fromPhysicsEditor",
 		"label": "sha04",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -19,7 +19,7 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":1, "y":216 }, { "x":216, "y":210 }, { "x":215, "y":0 }, { "x":1, "y":0 } ]
+					[ { "x":1, "y":0 }, { "x":1, "y":216 }, { "x":215, "y":216 }, { "x":215, "y":0 } ]
 				]
 			}
 		]
@@ -27,7 +27,7 @@
 	"sha05": {
 		"type": "fromPhysicsEditor",
 		"label": "sha05",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -53,7 +53,7 @@
 	"sha06": {
 		"type": "fromPhysicsEditor",
 		"label": "sha06",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -79,7 +79,7 @@
 	"sha07": {
 		"type": "fromPhysicsEditor",
 		"label": "sha07",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -103,7 +103,7 @@
 	"sha08": {
 		"type": "fromPhysicsEditor",
 		"label": "sha08",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -142,7 +142,7 @@
 	"sha09": {
 		"type": "fromPhysicsEditor",
 		"label": "sha09",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -166,7 +166,7 @@
 	"sha10": {
 		"type": "fromPhysicsEditor",
 		"label": "sha10",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -206,9 +206,9 @@
 				"label": "",
 				"isSensor": false,
 				"circle": {
-					"x": 63,
-					"y": 64,
-					"radius": 62.854660850218984
+					"x": 21.18032786885246,
+					"y": 20.536885245901647,
+					"radius": 19.854660850218977
 				}
 			}
 		]
@@ -216,7 +216,7 @@
 	"sha01": {
 		"type": "fromPhysicsEditor",
 		"label": "sha01",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -240,7 +240,7 @@
 	"sha02": {
 		"type": "fromPhysicsEditor",
 		"label": "sha02",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -256,9 +256,9 @@
 				"label": "",
 				"isSensor": false,
 				"circle": {
-					"x": 108,
-					"y": 107,
-					"radius": 109.22453936730518
+					"x": 108.8233082706767,
+					"y": 108.6466165413534,
+					"radius": 106.34614740264357
 				}
 			}
 		]
@@ -266,7 +266,7 @@
 	"sha03": {
 		"type": "fromPhysicsEditor",
 		"label": "sha03",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0,
@@ -282,7 +282,7 @@
 				"label": "",
 				"isSensor": false,
 				"vertices": [
-					[ { "x":215, "y":217 }, { "x":212, "y":3 }, { "x":70, "y":3 }, { "x":0, "y":69 }, { "x":0, "y":148 }, { "x":71, "y":214 } ]
+					[ { "x":215, "y":2 }, { "x":68, "y":2 }, { "x":0, "y":69 }, { "x":0, "y":148 }, { "x":70, "y":216 }, { "x":215, "y":217 } ]
 				]
 			}
 		]

@@ -4,11 +4,32 @@
 			"image": "blackbox.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1064,
-				"h": 483
+				"w": 2028,
+				"h": 221
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "gun",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 274,
+						"h": 166
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 274,
+						"h": 164
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 274,
+						"h": 164
+					}
+				},
 				{
 					"filename": "sha01",
 					"rotated": false,
@@ -24,10 +45,31 @@
 						"h": 219
 					},
 					"frame": {
-						"x": 1,
+						"x": 277,
 						"y": 1,
 						"w": 219,
 						"h": 219
+					}
+				},
+				{
+					"filename": "particle",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 42,
+						"h": 41
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 42,
+						"h": 41
+					},
+					"frame": {
+						"x": 1,
+						"y": 167,
+						"w": 42,
+						"h": 41
 					}
 				},
 				{
@@ -45,8 +87,8 @@
 						"h": 219
 					},
 					"frame": {
-						"x": 1,
-						"y": 222,
+						"x": 498,
+						"y": 1,
 						"w": 219,
 						"h": 219
 					}
@@ -66,7 +108,7 @@
 						"h": 219
 					},
 					"frame": {
-						"x": 222,
+						"x": 719,
 						"y": 1,
 						"w": 219,
 						"h": 219
@@ -87,8 +129,8 @@
 						"h": 217
 					},
 					"frame": {
-						"x": 222,
-						"y": 222,
+						"x": 940,
+						"y": 1,
 						"w": 217,
 						"h": 217
 					}
@@ -108,8 +150,8 @@
 						"h": 217
 					},
 					"frame": {
-						"x": 441,
-						"y": 222,
+						"x": 1159,
+						"y": 1,
 						"w": 217,
 						"h": 217
 					}
@@ -129,73 +171,10 @@
 						"h": 217
 					},
 					"frame": {
-						"x": 443,
+						"x": 1378,
 						"y": 1,
 						"w": 217,
 						"h": 217
-					}
-				},
-				{
-					"filename": "gun",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 274,
-						"h": 166
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 274,
-						"h": 164
-					},
-					"frame": {
-						"x": 660,
-						"y": 220,
-						"w": 274,
-						"h": 164
-					}
-				},
-				{
-					"filename": "sha06",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 96,
-						"h": 96
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 96,
-						"h": 96
-					},
-					"frame": {
-						"x": 660,
-						"y": 386,
-						"w": 96,
-						"h": 96
-					}
-				},
-				{
-					"filename": "sha10",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 96,
-						"h": 96
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 96,
-						"h": 96
-					},
-					"frame": {
-						"x": 758,
-						"y": 386,
-						"w": 96,
-						"h": 96
 					}
 				},
 				{
@@ -213,7 +192,7 @@
 						"h": 217
 					},
 					"frame": {
-						"x": 662,
+						"x": 1597,
 						"y": 1,
 						"w": 193,
 						"h": 217
@@ -234,31 +213,52 @@
 						"h": 217
 					},
 					"frame": {
-						"x": 857,
+						"x": 1792,
 						"y": 1,
 						"w": 137,
 						"h": 217
 					}
 				},
 				{
-					"filename": "particle",
+					"filename": "sha06",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 127,
-						"h": 127
+						"w": 96,
+						"h": 96
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 127,
-						"h": 127
+						"w": 96,
+						"h": 96
 					},
 					"frame": {
-						"x": 936,
-						"y": 220,
-						"w": 127,
-						"h": 127
+						"x": 1931,
+						"y": 1,
+						"w": 96,
+						"h": 96
+					}
+				},
+				{
+					"filename": "sha10",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 96,
+						"h": 96
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 96,
+						"h": 96
+					},
+					"frame": {
+						"x": 1931,
+						"y": 99,
+						"w": 96,
+						"h": 96
 					}
 				}
 			]
@@ -267,6 +267,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:81f3589995b7261674b75bb70fbc01e5:8128eeeca15dd8d2f372420be5925d73:fb8a12f4b53e6cff74dde49db5150fe9$"
+		"smartupdate": "$TexturePacker:SmartUpdate:21c4b17615653b924bc9638d2083e626:fe994e249d325f34087615f710bf12f4:fb8a12f4b53e6cff74dde49db5150fe9$"
 	}
 }
