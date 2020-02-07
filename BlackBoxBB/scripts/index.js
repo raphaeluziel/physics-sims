@@ -29,18 +29,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function create ()
   {
-    this.matter.world.setBounds().disableGravity();
+    this.matter.world.disableGravity();
 
     this.add.image(400, 300, 'line').setScale(1, 0.4);
 
     var shapes = this.cache.json.get('shapes');
 
-    particle = this.matter.add.sprite(200, 250, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.2);
-    particle.setFrictionAir(0).setBounce(1).setFriction(0);
-    particle.setAngularVelocity(0).setVelocity(6, 0);
+    particle = this.matter.add.sprite(200, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.5);
+    //particle.setFrictionAir(0);
+    //particle.setBounce(1);
+    //particle.setFriction(0.5);
+    particle.setAngularVelocity(0);
+    particle.setVelocity(6, 0);
 
-
-    sha03 = this.matter.add.sprite(600, 300, 'sheet', 'sha03', {shape: shapes.sha03});
+    sha01 = this.matter.add.sprite(600, 300, 'sheet', 'sha01', {shape: shapes.sha01});
 
   }
 
