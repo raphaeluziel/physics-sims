@@ -181,21 +181,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">sprites/gun.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>69,42,137,83</rect>
-                <key>scale9Paddings</key>
-                <rect>69,42,137,83</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">sprites/particle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -205,9 +190,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>11,10,21,21</rect>
+                <rect>220,220,439,439</rect>
                 <key>scale9Paddings</key>
-                <rect>11,10,21,21</rect>
+                <rect>220,220,439,439</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -294,7 +279,6 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>sprites/gun.png</filename>
             <filename>sprites/particle.png</filename>
             <filename>sprites/sha01.png</filename>
             <filename>sprites/sha02.png</filename>

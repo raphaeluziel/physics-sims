@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', function(){
     backgroundColor: '#eeeeee',
     physics: {
         default: 'matter',
-        arcade: {
-            debug: true
-        }
     },
     scene: {
       preload: preload,
@@ -35,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var shapes = this.cache.json.get('shapes');
 
-    particle = this.matter.add.sprite(200, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.5);
+    particle = this.matter.add.sprite(200, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.01);
     //particle.setFrictionAir(0);
-    //particle.setBounce(1);
-    //particle.setFriction(0.5);
-    particle.setAngularVelocity(0);
+    particle.setBounce(2);
+    //particle.setFriction(0, 0, 0);
+    //particle.setAngularVelocity(0);
     particle.setVelocity(6, 0);
 
     sha01 = this.matter.add.sprite(600, 300, 'sheet', 'sha01', {shape: shapes.sha01});
