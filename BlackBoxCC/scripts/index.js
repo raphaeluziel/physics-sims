@@ -71,7 +71,7 @@ function create ()
   particle.setFrictionAir(0).setBounce(1).setFriction(0);
   particle.setAngularVelocity(0);
 
-  particle.setVelocity(6, 0);
+  particle.setVelocity(1, 0);
 
   this.add.image(400, 325, 'line').setAngle(90);
   this.add.image(400, 270, 'line').setAngle(90);

@@ -190,14 +190,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>220,220,439,439</rect>
+                <rect>32,32,63,63</rect>
                 <key>scale9Paddings</key>
-                <rect>220,220,439,439</rect>
+                <rect>32,32,63,63</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">sprites/sha01.png</key>
-            <key type="filename">sprites/sha07.png</key>
             <key type="filename">sprites/sha09.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -207,9 +206,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>55,55,109,109</rect>
+                <rect>54,54,109,109</rect>
                 <key>scale9Paddings</key>
-                <rect>55,55,109,109</rect>
+                <rect>54,54,109,109</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -224,28 +223,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>54,54,109,109</rect>
+                <rect>54,54,108,108</rect>
                 <key>scale9Paddings</key>
-                <rect>54,54,109,109</rect>
+                <rect>54,54,108,108</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">sprites/sha05.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>48,54,97,109</rect>
-                <key>scale9Paddings</key>
-                <rect>48,54,97,109</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/sha06.png</key>
             <key type="filename">sprites/sha10.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -255,9 +239,39 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>24,24,48,48</rect>
+                <rect>24,24,47,47</rect>
                 <key>scale9Paddings</key>
-                <rect>24,24,48,48</rect>
+                <rect>24,24,47,47</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/sha06.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,54,55,109</rect>
+                <key>scale9Paddings</key>
+                <rect>28,54,55,109</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/sha07.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,54,55,108</rect>
+                <key>scale9Paddings</key>
+                <rect>28,54,55,108</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -270,9 +284,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>34,54,69,109</rect>
+                <rect>40,53,79,107</rect>
                 <key>scale9Paddings</key>
-                <rect>34,54,69,109</rect>
+                <rect>40,53,79,107</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
