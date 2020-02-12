@@ -196,8 +196,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha01.png</key>
-            <key type="filename">sprites/sha09.png</key>
+            <key type="filename">sprites/sha1.png</key>
+            <key type="filename">sprites/sha9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -212,25 +212,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha02.png</key>
-            <key type="filename">sprites/sha03.png</key>
-            <key type="filename">sprites/sha04.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>54,54,108,108</rect>
-                <key>scale9Paddings</key>
-                <rect>54,54,108,108</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">sprites/sha05.png</key>
             <key type="filename">sprites/sha10.png</key>
+            <key type="filename">sprites/sha5.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -245,7 +228,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha06.png</key>
+            <key type="filename">sprites/sha2.png</key>
+            <key type="filename">sprites/sha3.png</key>
+            <key type="filename">sprites/sha4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>54,54,108,108</rect>
+                <key>scale9Paddings</key>
+                <rect>54,54,108,108</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">sprites/sha6.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -260,7 +260,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha07.png</key>
+            <key type="filename">sprites/sha7.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -275,7 +275,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha08.png</key>
+            <key type="filename">sprites/sha8.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -294,16 +294,16 @@
         <key>fileList</key>
         <array>
             <filename>sprites/particle.png</filename>
-            <filename>sprites/sha01.png</filename>
-            <filename>sprites/sha02.png</filename>
-            <filename>sprites/sha03.png</filename>
-            <filename>sprites/sha04.png</filename>
-            <filename>sprites/sha05.png</filename>
-            <filename>sprites/sha06.png</filename>
-            <filename>sprites/sha07.png</filename>
-            <filename>sprites/sha08.png</filename>
-            <filename>sprites/sha09.png</filename>
             <filename>sprites/sha10.png</filename>
+            <filename>sprites/sha1.png</filename>
+            <filename>sprites/sha2.png</filename>
+            <filename>sprites/sha3.png</filename>
+            <filename>sprites/sha4.png</filename>
+            <filename>sprites/sha5.png</filename>
+            <filename>sprites/sha6.png</filename>
+            <filename>sprites/sha7.png</filename>
+            <filename>sprites/sha8.png</filename>
+            <filename>sprites/sha9.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

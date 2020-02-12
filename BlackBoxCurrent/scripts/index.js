@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', function(){
   var cursors;
   var gun;
   var shapes;
+  var particles = [];
   var lastFired = 0;
+  var v = 6;
+  const Y = 300; // the equilibrium position
 
   function preload ()
   {
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
     this.matter.world.disableGravity();
     cursors = this.input.keyboard.createCursorKeys();
 
-    gun = this.add.sprite(200, 300, 'gun').setScale(0.4);
+    gun = this.add.sprite(140, Y + 9, 'gun').setScale(0.4);
 
     this.add.image(400, 300, 'line').setScale(1, 0.4);
     line = this.add.image(600, 300, 'line').setScale(1, 0.4);
@@ -44,14 +47,15 @@ document.addEventListener('DOMContentLoaded', function(){
     shapes = this.cache.json.get('shapes');
 
     particle = this.matter.add.sprite(200, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05);
-    particle.setVelocity(6, 0);
+    particle.setVelocity(v, 0);
 
-    sha06 = this.matter.add.sprite(600, 300, 'sheet', 'sha06', {shape: shapes.sha06});
+    sha6 = this.matter.add.sprite(600, 300, 'sheet', 'sha6', {shape: shapes.sha6});
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
-        console.log(event, bodyA, bodyB);
-        console.log("HIT HIT HIT!");
-        particle.setVelocity(0, -6);
+        //console.log(event, bodyA, bodyB);
+        //console.log("HIT HIT HIT!");
+        //particle.setVelocity(0, -v);
+        bounce6();
     });
 
   }
@@ -59,25 +63,37 @@ document.addEventListener('DOMContentLoaded', function(){
   function update (time)
   {
       if (cursors.up.isDown)
-      {
-        console.log("moving");
         gun.y += -2;
-      }
-
       else if (cursors.down.isDown)
-      {
-          gun.y += 2;;
-      }
+        gun.y += 2;;
 
-      if (cursors.space.isDown)
-      {
-        gun.angle += -2;
-      }
       if (cursors.space.isDown && time > lastFired)
       {
-        particle = this.matter.add.sprite(200, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05);
-        particle.setVelocity(6 * Math.cos(gun.angle), 6 * Math.sin(gun.angle));
-        lastFired = time + 50;
+        particles.push(this.matter.add.sprite(196, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05));
+        particles[particles.length - 1].y = gun.y - 9;
+        particles[particles.length - 1].setVelocity(v, 0);
+        lastFired = time + 500;
+      }
+
+      for (let i = 0; i < particles.length; i++)
+        if ((particles[0].x > 800) || (particles[0].x < 0) || (particles[0].y > 500) || (particles[0].y < 0))
+        {
+            particles[i].destroy();
+            particles.shift();
+        }
+
+  }
+
+  function bounce6 ()
+  {
+      for (let i = 0; i < particles.length; i++)
+      {
+          if (particles[i].y < Y)
+            particles[i].setVelocity(0, -v);
+          else if (particles[i].y > Y)
+            particles[i].setVelocity(0, v);
+          else
+            particles[i].setVelocity(-v, 0);
       }
   }
 
