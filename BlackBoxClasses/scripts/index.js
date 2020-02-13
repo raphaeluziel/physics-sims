@@ -26,6 +26,41 @@ document.addEventListener('DOMContentLoaded', function(){
   const Y = 300; // the equilibrium position
   var n = 6;
 
+///////////////////////////////////////////////////////////////////////////////
+// https://phasergames.com/extend-a-sprite-in-phaser-3/?mc_cid=3f4ee26e5d&mc_eid=a4d9ee0291
+  class Isosceles extends Phaser.GameObjects.Sprite{
+
+    constructor(config) {
+      super(config.scene, config.x, config.y, "bomb");
+      console.log("iso", this);
+      //this.height = height;
+      //this.width = width;
+      this.six = this.matter.add.sprite(600, 300, 'sheet', 'sha6', {shape: shapes.sha6});
+    }
+    // Getter
+    get bounce() {
+      return this.direction();
+    }
+    // Method
+    direction()
+    {
+        for (let i = 0; i < particles.length; i++)
+        {
+            if (particles[i].y < Y)
+              particles[i].setVelocity(0, -v);
+            else if (particles[i].y > Y)
+              particles[i].setVelocity(0, v);
+            else
+              particles[i].setVelocity(-v, 0);
+        }
+    }
+
+  }
+
+  const isosceles = new Isosceles(10, 10);
+
+///////////////////////////////////////////////////////////////////////////////
+
   function preload ()
   {
     this.load.atlas('sheet', 'assets/blackbox.png', 'assets/blackbox.json');
@@ -36,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function create ()
   {
+    console.log("create", this);
     this.matter.world.disableGravity();
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -50,14 +86,13 @@ document.addEventListener('DOMContentLoaded', function(){
     particle = this.matter.add.sprite(200, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05);
     particle.setVelocity(v, 0);
 
-    sha6 = this.matter.add.sprite(600, 300, 'sheet', 'sha6', {shape: shapes.sha6});
+    //sha6 = this.matter.add.sprite(600, 300, 'sheet', 'sha6', {shape: shapes.sha6});
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
         //console.log(event, bodyA, bodyB);
         //console.log("HIT HIT HIT!");
         //particle.setVelocity(0, -v);
-        bounce[0]();
-        console.log(bounce);
+        isosceles.bounce;
     });
 
   }
@@ -84,21 +119,6 @@ document.addEventListener('DOMContentLoaded', function(){
             particles.splice(i, 1);
         }
 
-  }
-
-  
-
-  function bounce6 ()
-  {
-      for (let i = 0; i < particles.length; i++)
-      {
-          if (particles[i].y < Y)
-            particles[i].setVelocity(0, -v);
-          else if (particles[i].y > Y)
-            particles[i].setVelocity(0, v);
-          else
-            particles[i].setVelocity(-v, 0);
-      }
   }
 
 });

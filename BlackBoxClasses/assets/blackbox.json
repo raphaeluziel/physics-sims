@@ -1,0 +1,251 @@
+{
+	"textures": [
+		{
+			"image": "blackbox.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1793,
+				"h": 219
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "particle",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 217,
+						"h": 217
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 217,
+						"h": 217
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 217,
+						"h": 217
+					}
+				},
+				{
+					"filename": "sha1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 217,
+						"h": 217
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 217,
+						"h": 217
+					},
+					"frame": {
+						"x": 220,
+						"y": 1,
+						"w": 217,
+						"h": 217
+					}
+				},
+				{
+					"filename": "sha9",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 217,
+						"h": 217
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 217,
+						"h": 217
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 217,
+						"h": 217
+					}
+				},
+				{
+					"filename": "sha6",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 110,
+						"h": 217
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 110,
+						"h": 217
+					},
+					"frame": {
+						"x": 658,
+						"y": 1,
+						"w": 110,
+						"h": 217
+					}
+				},
+				{
+					"filename": "sha2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 216,
+						"h": 216
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 216,
+						"h": 216
+					},
+					"frame": {
+						"x": 770,
+						"y": 1,
+						"w": 216,
+						"h": 216
+					}
+				},
+				{
+					"filename": "sha3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 216,
+						"h": 216
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 216,
+						"h": 216
+					},
+					"frame": {
+						"x": 988,
+						"y": 1,
+						"w": 216,
+						"h": 216
+					}
+				},
+				{
+					"filename": "sha4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 216,
+						"h": 216
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 216,
+						"h": 216
+					},
+					"frame": {
+						"x": 1206,
+						"y": 1,
+						"w": 216,
+						"h": 216
+					}
+				},
+				{
+					"filename": "sha7",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 110,
+						"h": 216
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 110,
+						"h": 216
+					},
+					"frame": {
+						"x": 1424,
+						"y": 1,
+						"w": 110,
+						"h": 216
+					}
+				},
+				{
+					"filename": "sha8",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 159,
+						"h": 213
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 159,
+						"h": 213
+					},
+					"frame": {
+						"x": 1536,
+						"y": 1,
+						"w": 159,
+						"h": 213
+					}
+				},
+				{
+					"filename": "sha10",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 95,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 95,
+						"h": 95
+					},
+					"frame": {
+						"x": 1697,
+						"y": 1,
+						"w": 95,
+						"h": 95
+					}
+				},
+				{
+					"filename": "sha5",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 95,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 95,
+						"h": 95
+					},
+					"frame": {
+						"x": 1697,
+						"y": 98,
+						"w": 95,
+						"h": 95
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:7b869e003fe9df237c543783670aec92:d850b816990e2f0f46a99aebac95303f:fb8a12f4b53e6cff74dde49db5150fe9$"
+	}
+}

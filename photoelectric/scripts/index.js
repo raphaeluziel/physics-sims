@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (let j = 0; j < electrons.length; j++){
 
       electrons[j].t += 1;
-    electrons[j].x = 100 + electrons[j].speed * electrons[j].t - DECELERATION_CONSTANT * stopping_voltage * electrons[j].t * electrons[j].t;
+      electrons[j].x = 100 + electrons[j].speed * electrons[j].t - DECELERATION_CONSTANT * stopping_voltage * electrons[j].t * electrons[j].t;
 
       if (electrons[j].x > 685)
         current += 1;
