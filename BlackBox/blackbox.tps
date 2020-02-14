@@ -196,8 +196,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha1.png</key>
-            <key type="filename">sprites/sha9.png</key>
+            <key type="filename">sprites/shape1.png</key>
+            <key type="filename">sprites/shape9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -212,8 +212,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha10.png</key>
-            <key type="filename">sprites/sha5.png</key>
+            <key type="filename">sprites/shape10.png</key>
+            <key type="filename">sprites/shape5.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -228,9 +228,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha2.png</key>
-            <key type="filename">sprites/sha3.png</key>
-            <key type="filename">sprites/sha4.png</key>
+            <key type="filename">sprites/shape2.png</key>
+            <key type="filename">sprites/shape3.png</key>
+            <key type="filename">sprites/shape4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -245,7 +245,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha6.png</key>
+            <key type="filename">sprites/shape6.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -260,7 +260,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha7.png</key>
+            <key type="filename">sprites/shape7.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -275,7 +275,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">sprites/sha8.png</key>
+            <key type="filename">sprites/shape8.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -294,16 +294,16 @@
         <key>fileList</key>
         <array>
             <filename>sprites/particle.png</filename>
-            <filename>sprites/sha10.png</filename>
-            <filename>sprites/sha1.png</filename>
-            <filename>sprites/sha2.png</filename>
-            <filename>sprites/sha3.png</filename>
-            <filename>sprites/sha4.png</filename>
-            <filename>sprites/sha5.png</filename>
-            <filename>sprites/sha6.png</filename>
-            <filename>sprites/sha7.png</filename>
-            <filename>sprites/sha8.png</filename>
-            <filename>sprites/sha9.png</filename>
+            <filename>sprites/shape1.png</filename>
+            <filename>sprites/shape10.png</filename>
+            <filename>sprites/shape2.png</filename>
+            <filename>sprites/shape3.png</filename>
+            <filename>sprites/shape4.png</filename>
+            <filename>sprites/shape5.png</filename>
+            <filename>sprites/shape6.png</filename>
+            <filename>sprites/shape7.png</filename>
+            <filename>sprites/shape8.png</filename>
+            <filename>sprites/shape9.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

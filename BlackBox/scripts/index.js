@@ -1,87 +1,115 @@
-var config = {
+document.addEventListener('DOMContentLoaded', function(){
+
+  var config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: '#efefef',
     parent: 'game',
+    backgroundColor: '#eeeeee',
     physics: {
         default: 'matter',
-        matter: {
-          debug: false
-        }
     },
     scene: {
-        preload: preload,
-        create: create
+      preload: preload,
+      create: create,
+      update: update
     }
-};
+  };
 
-var game = new Phaser.Game(config);
+  var game = new Phaser.Game(config);
+  var cursors;
+  var gun;
+  var shapes;
+  var particles = [];
+  var lastFired = 0;
+  var v = 6;
+  const Y = 300; // the equilibrium position
+  var n = 6;
 
-function preload ()
-{
-    this.load.image('line', 'assets/line.png');
-    this.load.image('blackbox', 'assets/blackbox.png');
-    this.load.image('sha02', 'assets/sha02.png');
-    this.load.image('particle', 'assets/particle.png');
-}
+  function preload ()
+  {
+    this.load.atlas('sheet', 'assets/blackbox.png', 'assets/blackbox.json');
+    this.load.json('shapes', 'assets/blackboxPhysics.json');
+    this.load.image('gun', 'sprites/gun.png');
+    this.load.image('line', 'sprites/line.png');
+  }
 
-function create ()
-{
+  function create ()
+  {
     this.matter.world.disableGravity();
+    cursors = this.input.keyboard.createCursorKeys();
 
-    this.add.image(50, 300, 'line');
-    this.add.image(600, 300, 'blackbox').setScale(0.263);
+    gun = this.add.sprite(140, Y + 9, 'gun').setScale(0.4);
 
-    particle = this.matter.add.image(100, 230, 'particle');
-    particle.setCircle();
-    particle.setScale(0.05);
-    particle.setVelocity(1, 0);
-    particle.setAngularVelocity(0);
-    particle.setFriction(0, 0, 0);
-    particle.setBounce(1);
+    this.add.image(400, 300, 'line').setScale(1, 0.4);
+    line = this.add.image(600, 300, 'line').setScale(1, 0.4);
+    line.angle = 90;
 
-    var sha0Npts = '0 100 100 0 100 200';
-    var sha0N = this.add.polygon(600, 300, sha0Npts, 0xae876b, 1);
-    this.matter.add.gameObject(sha0N, { shape: { type: 'fromVerts', verts: sha0Npts, flagInternal: true } });
-    sha0N.setStatic(true);
-    sha0N.x += 33;
-    sha0N.setBounce(1);
+    shapes = this.cache.json.get('shapes');
 
-    /*
-    // Large circle
-    sha02 = this.matter.add.image(600, 300, 'sha02');
-    sha02.setCircle();
-    sha02.setScale(0.28);
-    sha02.setStatic(true);
+    this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
 
-    // Right triangle, upward bounce
-    var sha01pts = '200 0 200 200 0 200';
-    var sha01 = this.add.polygon(600, 300, sha01pts, 0xff0000, 0.1);
-    this.matter.add.gameObject(sha01, { shape: { type: 'fromVerts', verts: sha01pts, flagInternal: true } });
-    sha01.setStatic(true);
-    sha01.x += 33;
-    sha01.y += 33;
+    this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
+        //console.log(/*event, bodyA,*/ bodyB);
+        bounce6(bodyB);
+    });
 
-    // Big box
-    var sha04pts = '0 0 200 0 200 200 0 200';
-    var sha04 = this.add.polygon(600, 300, sha04pts, 0x00ffff, 0.1);
-    this.matter.add.gameObject(sha04, { shape: { type: 'fromVerts', verts: sha04pts, flagInternal: true } });
-    sha04.setStatic(true);
+  }
 
-    // Like moon mirror
-    var sha05pts = '0 0 200 0 200 200 0 200 100 100';
-    var sha05 = this.add.polygon(600, 300, sha05pts, 0x00ff00, 0.1);
-    this.matter.add.gameObject(sha05, { shape: { type: 'fromVerts', verts: sha05pts, flagInternal: true } });
-    sha05.setStatic(true);
-    sha05.x += 22;
+  function update (time)
+  {
+      if (cursors.up.isDown)
+        gun.y += -2;
+      else if (cursors.down.isDown)
+        gun.y += 2;;
 
-    // right triangle with vertex at center
-    var sha07pts = '0 100 100 0 100 200';
-    var sha07 = this.add.polygon(600, 300, sha07pts, 0xae876b, 1);
-    this.matter.add.gameObject(sha07, { shape: { type: 'fromVerts', verts: sha07pts, flagInternal: true } });
-    sha07.setStatic(true);
-    sha07.x += 66;
-    */
+      if (cursors.space.isDown && time > lastFired)
+      {
+        particles.push(this.matter.add.sprite(196, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05));
+        particles[particles.length - 1].y = gun.y - 9;
+        particles[particles.length - 1].setVelocity(v, 0);
+        //particles[particles.length - 1].setOnCollide(hello);
+        lastFired = time + 500;
+      }
 
-}
+      for (let i = 0; i < particles.length; i++)
+        if ((particles[i].x > 800) || (particles[i].x < 0) || (particles[i].y > 500) || (particles[i].y < 0))
+        {
+            particles[i].destroy();
+            particles.splice(i, 1);
+        }
+
+  }
+
+
+
+  function bounce6 (particle)
+  {
+    //console.log(particle.gameObject);
+      /*
+      if (particle.y < Y)
+        particle.setVelocity(0, -v);
+      else if (particle.y > Y)
+        particle.setVelocity(0, v);
+      else
+        particle.setVelocity(-v, 0);
+        */
+
+
+      for (let i = 0; i < particles.length; i++)
+      {
+          if (particles[i].y < Y)
+            particles[i].setVelocity(0, -v);
+          else if (particles[i].y > Y)
+            particles[i].setVelocity(0, v);
+          else
+            particles[i].setVelocity(-v, 0);
+      }
+
+  }
+
+  //function hello(){console.log("hello")};
+
+
+
+});
