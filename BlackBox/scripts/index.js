@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
     this.load.atlas('sheet', 'assets/blackbox.png', 'assets/blackbox.json');
     this.load.json('shapes', 'assets/blackboxPhysics.json');
     this.load.image('gun', 'sprites/gun.png');
+    this.load.image('button6', 'sprites/button6.png');
     this.load.image('line', 'sprites/line.png');
   }
 
@@ -38,6 +39,14 @@ document.addEventListener('DOMContentLoaded', function(){
   {
     this.matter.world.disableGravity();
     cursors = this.input.keyboard.createCursorKeys();
+
+    this.input.on('pointerdown', function (pointer) {
+
+        console.log('down');
+
+        this.add.image(pointer.x, pointer.y, 'button6');
+
+    }, this);
 
     gun = this.add.sprite(140, Y + 9, 'gun').setScale(0.4);
 
@@ -47,11 +56,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
     shapes = this.cache.json.get('shapes');
 
-    this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
+    x = this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
+    console.log("X = ", x)
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
-        //console.log(/*event, bodyA,*/ bodyB);
-        bounce6(bodyB);
+        bounce6(bodyB.parent.gameObject);
     });
 
   }
@@ -68,8 +77,7 @@ document.addEventListener('DOMContentLoaded', function(){
         particles.push(this.matter.add.sprite(196, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05));
         particles[particles.length - 1].y = gun.y - 9;
         particles[particles.length - 1].setVelocity(v, 0);
-        //particles[particles.length - 1].setOnCollide(hello);
-        lastFired = time + 500;
+        lastFired = time + 50;
       }
 
       for (let i = 0; i < particles.length; i++)
@@ -78,38 +86,17 @@ document.addEventListener('DOMContentLoaded', function(){
             particles[i].destroy();
             particles.splice(i, 1);
         }
-
   }
-
 
 
   function bounce6 (particle)
   {
-    //console.log(particle.gameObject);
-      /*
       if (particle.y < Y)
         particle.setVelocity(0, -v);
       else if (particle.y > Y)
         particle.setVelocity(0, v);
       else
         particle.setVelocity(-v, 0);
-        */
-
-
-      for (let i = 0; i < particles.length; i++)
-      {
-          if (particles[i].y < Y)
-            particles[i].setVelocity(0, -v);
-          else if (particles[i].y > Y)
-            particles[i].setVelocity(0, v);
-          else
-            particles[i].setVelocity(-v, 0);
-      }
-
   }
-
-  //function hello(){console.log("hello")};
-
-
 
 });
