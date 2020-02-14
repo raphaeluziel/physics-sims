@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var lastFired = 0;
   var v = 6;
   const Y = 300; // the equilibrium position
-  var n = 6;
+  var n = -1;
 
   function preload ()
   {
@@ -40,13 +40,8 @@ document.addEventListener('DOMContentLoaded', function(){
     this.matter.world.disableGravity();
     cursors = this.input.keyboard.createCursorKeys();
 
-    this.input.on('pointerdown', function (pointer) {
 
-        console.log('down');
 
-        this.add.image(pointer.x, pointer.y, 'button6');
-
-    }, this);
 
     gun = this.add.sprite(140, Y + 9, 'gun').setScale(0.4);
 
@@ -56,8 +51,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
     shapes = this.cache.json.get('shapes');
 
-    x = this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
-    console.log("X = ", x)
+    //this.matter.add.sprite(600, 300, 'sheet', 'shape6', {shape: shapes["shape6"]});
+
+    var button6 = this.add.sprite(400, 550, 'button6').setScale(0.3).setInteractive();
+    button6.on('pointerdown', function (pointer) {
+      console.log("JUST");
+      n = 6;
+      //this.matter.add.sprite(600, 300, 'sheet', 'shape6', {shape: shapes["shape6"]});
+    });
+
+    if (n > 0)
+      this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
         bounce6(bodyB.parent.gameObject);
@@ -67,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function update (time)
   {
+    if (n > 0){
+      this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
+      n = -1;
+    }
+
       if (cursors.up.isDown)
         gun.y += -2;
       else if (cursors.down.isDown)
