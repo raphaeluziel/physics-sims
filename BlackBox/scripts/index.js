@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function(){
   var shapes;
   var particles = [];
   var lastFired = 0;
-  var v = 3;
+  var v = 5;
   const Y = 300; // the equilibrium position
-  var n = 2;
+  var n = 7;
 
   function preload ()
   {
@@ -51,17 +51,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
     shapes = this.cache.json.get('shapes');
 
-    shape0 = this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]}).setVisible(true);
+    shape7 = this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
+    //shape1.setPosition(638, 338);
+    // DONT THINK YOU SHOULD USE THIS ONE shape7.setPosition(565, 300);
+    //shape9.setPosition(638, 262);
 
     var button6 = this.add.sprite(400, 550, 'button6').setScale(0.3).setInteractive();
 
     button6.on('pointerdown', function (pointer) {
-      shape0.setVisible(true);
+      //shape0.setVisible(true);
     });
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
-        if (shape0.visible)
-          bounce2(bodyB.parent.gameObject);
+        //if (shape0.visible)
+          bounce7(bodyB.parent.gameObject);
     });
 
   }
@@ -69,10 +72,9 @@ document.addEventListener('DOMContentLoaded', function(){
   function update (time)
   {
       if (cursors.up.isDown)
-        gun.y += -1/5;
+        gun.y += -1;
       else if (cursors.down.isDown)
-        gun.y += 1/5;
-
+        gun.y += 1;
 
       if (cursors.space.isDown && time > lastFired)
       {
@@ -90,8 +92,10 @@ document.addEventListener('DOMContentLoaded', function(){
         }
   }
 
-
-
+  function bounce1 (particle) // right triangle up
+  {
+    particle.setVelocity(0, -v);
+  }
   function bounce2 (particle) // large circle
   {
       let y = 300 - particle.y;
@@ -103,13 +107,20 @@ document.addEventListener('DOMContentLoaded', function(){
         particle.setVelocity(vx, vy);
       }
   }
-
+  function bounce3 (particle) // trapezoid
+  {
+      if (particle.y < Y - 40)
+        particle.setVelocity(0, -v);
+      else if (particle.y > Y + 40)
+        particle.setVelocity(0, v);
+      else
+        particle.setVelocity(-v, 0);
+  }
   function bounce4 (particle) // large square
   {
       particle.setVelocity(-v, 0);
   }
-
-  function bounce5 (particle) // large circle
+  function bounce5 (particle) // small circle
   {
       let y = 300 - particle.y;  console.log(y);
       let r = 52;
@@ -120,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function(){
         particle.setVelocity(vx, vy);
       }
   }
-
   function bounce6 (particle) // isosceles triangle
   {
       if (particle.y < Y)
@@ -129,6 +139,37 @@ document.addEventListener('DOMContentLoaded', function(){
         particle.setVelocity(0, v);
       else
         particle.setVelocity(-v, 0);
+  }
+  let secondHit = false;
+  function bounce7 (particle) // moon mirror
+  {
+      if (particle.y < Y && !secondHit)
+      {
+          particle.setVelocity(0, v);
+          secondHit = true;
+      }
+      else if (particle.y > Y && !secondHit)
+      {
+          particle.setVelocity(0, -v);
+          secondHit = true;
+      }
+      else
+      {
+          particle.setVelocity(-v, 0);
+          secondHit = false;
+      }
+  }
+  function bounce8 (particle) // rconcave mirror
+  {
+      particle.setVelocity(0, v);
+  }
+  function bounce9 (particle) // right triangle down
+  {
+      particle.setVelocity(0, v);
+  }
+  function bounce10 (particle) // small square
+  {
+      particle.setVelocity(-v, 0);
   }
 
 });
