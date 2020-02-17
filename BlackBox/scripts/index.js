@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var lastFired = 0;
   var v = 5;
   const Y = 300; // the equilibrium position
-  var n = 7;
+  var n = 8;
 
   function preload ()
   {
@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
     this.load.image('button6', 'sprites/button6.png');
     this.load.image('line', 'sprites/line.png');
     this.load.image('box', 'sprites/box.png');
+    this.load.image('circleguide', 'sprites/circleguide.png');
   }
 
   function create ()
@@ -47,13 +48,16 @@ document.addEventListener('DOMContentLoaded', function(){
     line = this.add.image(600, 300, 'line').setScale(1, 0.4);
     line.angle = 90;
 
+    this.add.image(260, 300, 'circleguide');
+
     this.add.image(600, 300, 'box');
 
     shapes = this.cache.json.get('shapes');
 
-    shape7 = this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
+    shape8 = this.matter.add.sprite(600, 300, 'sheet', 'shape' + n, {shape: shapes["shape" + n]});
     //shape1.setPosition(638, 338);
     // DONT THINK YOU SHOULD USE THIS ONE shape7.setPosition(565, 300);
+    shape8.setPosition(508, 298);
     //shape9.setPosition(638, 262);
 
     var button6 = this.add.sprite(400, 550, 'button6').setScale(0.3).setInteractive();
@@ -64,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
         //if (shape0.visible)
-          bounce7(bodyB.parent.gameObject);
+          bounce8(bodyB.parent.gameObject);
     });
 
   }
@@ -81,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function(){
         particles.push(this.matter.add.sprite(196, 230, 'sheet', 'particle', {shape: shapes.particle}).setScale(0.05));
         particles[particles.length - 1].y = gun.y - 9;
         particles[particles.length - 1].setVelocity(v, 0);
-        lastFired = time + 500;
+        lastFired = time + 200;
       }
 
       for (let i = 0; i < particles.length; i++)
@@ -100,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function(){
   {
       let y = 300 - particle.y;
       let r = 112;
-      if (y <= r){
+      if (Math.abs(y) <= r){
         let o = Math.asin(y / r);
         let vx = - v * Math.cos(2 * o);
         let vy = - v * Math.sin(2 * o);
@@ -124,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function(){
   {
       let y = 300 - particle.y;  console.log(y);
       let r = 52;
-      if (y <= r){
+      if (Math.abs(y) <= r){
         let o = Math.asin(y / r);
         let vx = - v * Math.cos(2 * o);
         let vy = - v * Math.sin(2 * o);
@@ -159,9 +163,16 @@ document.addEventListener('DOMContentLoaded', function(){
           secondHit = false;
       }
   }
-  function bounce8 (particle) // rconcave mirror
+  function bounce8 (particle) // concave mirror
   {
-      particle.setVelocity(0, v);
+      let y = 300 - particle.y;
+      let r = 240;
+      if (Math.abs(y) <= r - 135){
+        let o = Math.asin(y / r);
+        let vx = - v * Math.cos(2 * o);
+        let vy = v * Math.sin(2 * o);
+        particle.setVelocity(vx, vy);
+    }
   }
   function bounce9 (particle) // right triangle down
   {
