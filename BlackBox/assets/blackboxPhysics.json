@@ -29,7 +29,7 @@
 	"shape6": {
 		"type": "fromPhysicsEditor",
 		"label": "shape6",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
@@ -53,7 +53,7 @@
 	"shape7": {
 		"type": "fromPhysicsEditor",
 		"label": "shape7",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.1,
 		"restitution": 0,
 		"friction": 0.1,
@@ -79,7 +79,7 @@
 	"shape8": {
 		"type": "fromPhysicsEditor",
 		"label": "shape8",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.1,
 		"restitution": 0,
 		"friction": 0.1,
@@ -118,7 +118,7 @@
 	"shape9": {
 		"type": "fromPhysicsEditor",
 		"label": "shape9",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
@@ -142,7 +142,7 @@
 	"shape10": {
 		"type": "fromPhysicsEditor",
 		"label": "shape10",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
@@ -166,11 +166,11 @@
 	"shape1": {
 		"type": "fromPhysicsEditor",
 		"label": "shape1",
-		"isStatic": false,
-		"density": 0.10000000149011612,
+		"isStatic": true,
+		"density": 0.1,
 		"restitution": 0,
-		"friction": 0.10000000149011612,
-		"frictionAir": 0.009999999776482582,
+		"friction": 0.1,
+		"frictionAir": 0.01,
 		"frictionStatic": 0.5,
 		"collisionFilter": {
 			"group": 0,
@@ -190,7 +190,7 @@
 	"shape2": {
 		"type": "fromPhysicsEditor",
 		"label": "shape2",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
@@ -216,7 +216,7 @@
 	"shape3": {
 		"type": "fromPhysicsEditor",
 		"label": "shape3",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
@@ -240,7 +240,7 @@
 	"shape4": {
 		"type": "fromPhysicsEditor",
 		"label": "shape4",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
@@ -264,7 +264,7 @@
 	"shape5": {
 		"type": "fromPhysicsEditor",
 		"label": "shape5",
-		"isStatic": false,
+		"isStatic": true,
 		"density": 0.10000000149011612,
 		"restitution": 0,
 		"friction": 0.10000000149011612,
